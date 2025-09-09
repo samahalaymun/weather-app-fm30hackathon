@@ -1,23 +1,30 @@
 import React from 'react'
+import SearchInProgress from './SearchInProgress';
+import SearchResult from './SearchResult';
 
 function SearchBar() {
   return (
-    <div className="mt-12 flex gap-5 md:flex-row flex-col  items-center justify-center">
-      <div className="relative min-w-full  md:min-w-[518px]">
-        <input
-          className="rounded-lg bg-neutral-800  pl-14 px-5 py-3   w-full"
-          placeholder="Search for a place..."
-        />
-        <img
-          src="/assets/images/icon-search.svg"
-          alt="search"
-          className="absolute left-5 top-[35%]"
-        />
+    <>
+      <div className="mt-12 flex gap-4 md:flex-row flex-col  items-center justify-center">
+        <div className="relative  w-full  lg:w-[526px]">
+          <input
+            className="rounded-xl bg-neutral-800 px-[62px] py-4 w-full tracking-wider"
+            placeholder="Search for a place..."
+          />
+          <img
+            src="/assets/images/icon-search.svg"
+            alt="search"
+            className="absolute left-6 top-[35%]"
+          />
+          {false &&<SearchInProgress />}
+          {false &&<SearchResult />}
+
+        </div>
+        <button className="rounded-xl bg-blue-500 text-xl font-medium w-full md:h-[56px] px-6 py-4 md:w-[114px]">
+          Search
+        </button>
       </div>
-      <button className="rounded-lg bg-blue-500 w-full p-3.5 md:w-[116px]">
-        Search
-      </button>
-    </div>
+    </>
   );
 }
 

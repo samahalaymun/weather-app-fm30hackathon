@@ -1,5 +1,6 @@
-import React from 'react'
 import SearchBar from '../../components/Home/SearchBar';
+import WeatherInfo from '../../components/Home/WeatherInfo';
+import LoadingWeatherState from '../../components/Home/LoadingWeatherState';
 
 function Home() {
   return (
@@ -8,6 +9,8 @@ function Home() {
         How's the sky looking today?
       </h1>
      <SearchBar/>
+     {true&&<WeatherInfo />}
+     {false&&<LoadingWeatherState />}
     </div>
   );
 }
