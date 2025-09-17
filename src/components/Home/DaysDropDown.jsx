@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { days } from "../../utils/utils";
 import { useSelector } from "react-redux";
 import moment from "moment";
 
 function DaysDropDown({ selectedDay, setSelectedDay }) {
+  const url = import.meta.env.BASE_URL;
   const [open, setOpen] = useState(false);
   const { weather } = useSelector((state) => state.weather);
 
@@ -14,7 +14,7 @@ function DaysDropDown({ selectedDay, setSelectedDay }) {
         className="flex items-center cursor-pointer gap-3 text-[16px] rounded-lg bg-neutral-600 px-4 py-2 text-neutral-0 hover:border-2 hover:border-neutral-0"
       >
         {moment(selectedDay).format("dddd")}
-        <img src="/assets/images/icon-dropdown.svg" alt="dropdown" />
+        <img src={url+"/assets/images/icon-dropdown.svg"} alt="dropdown" />
       </button>
 
       {open && (

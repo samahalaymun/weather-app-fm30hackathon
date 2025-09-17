@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getWeather } from "../../features/weather/weatherSlice";
+import {  useSelector } from "react-redux";
 import moment from "moment";
 import { weatherIcons } from "../../utils/utils";
 
 function CurrentWeatherCard() {
+  const url = import.meta.env.BASE_URL;
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
- const { location, weather } = useSelector(
-   (state) => state.weather
- );
+  const { location, weather } = useSelector((state) => state.weather);
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,14 +19,13 @@ function CurrentWeatherCard() {
     };
   }, []);
 
-
   return (
     <div className="relative">
       <img
         src={
           screenWidth > 1024
-            ? "/assets/images/bg-today-large.svg"
-            : "/assets/images/bg-today-small.svg"
+            ? url+"/assets/images/bg-today-large.svg"
+            : url+"/assets/images/bg-today-small.svg"
         }
         alt="bg-today"
         className="w-full h-full rounded-xl   transition-all duration-700 ease-in-out"
@@ -44,7 +41,7 @@ function CurrentWeatherCard() {
         </div>
         <div className="flex justify-between items-center md:gap-5">
           <img
-            src={weatherIcons[weather?.current?.weathercode]}
+            src={url+weatherIcons[weather?.current?.weathercode]}
             alt="weather-status"
             className="w-30 h-30"
           />

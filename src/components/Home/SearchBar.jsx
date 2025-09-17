@@ -6,6 +6,8 @@ import { getLocation, getWeather } from "../../features/weather/weatherSlice";
 import { deboune } from "../../utils/utils";
 
 function SearchBar() {
+  const url = import.meta.env.BASE_URL;
+
   const { units, searchLoding, error, searchResult, location } = useSelector(
     (state) => state.weather
   );
@@ -23,7 +25,7 @@ function SearchBar() {
       dispatch(getWeather({ lat: location.lat, lon: location.lon, units }));
   };
   useEffect(() => {
-    dispatch(getLocation( searchQuery )).unwrap();
+    dispatch(getLocation(searchQuery)).unwrap();
   }, [searchQuery]);
   return (
     <>
@@ -44,12 +46,12 @@ function SearchBar() {
             name="searchCity"
           />
           <img
-            src="/assets/images/icon-search.svg"
+            src={url+"/assets/images/icon-search.svg"}
             alt="search"
             className="absolute left-6 top-[35%]"
           />
           {searchLoding && <SearchInProgress />}
-          {searchResult.length > 0 &&searchQuery&& (
+          {searchResult.length > 0 && searchQuery && (
             <SearchResult setQuery={setCity} cities={searchResult} />
           )}
         </div>

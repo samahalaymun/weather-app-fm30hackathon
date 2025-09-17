@@ -25,16 +25,6 @@ export const unitsOptions = [
   },
 ];
 
-export const days = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
-
 export const weatherIcons = {
   0: "/assets/images/icon-sunny.webp",
   1: "/assets/images/icon-partly-cloudy.webp",

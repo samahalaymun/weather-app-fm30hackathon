@@ -1,10 +1,9 @@
-import Header from "./Header/Header";
-
 function ErrorPage() {
+  const url = import.meta.env.BASE_URL;
   return (
     <div className="mt-16 w-full pt-10 flex flex-col items-center gap-6">
       <img
-        src="/assets/images/icon-error.svg"
+        src={url + "/assets/images/icon-error.svg"}
         alt="error"
         className="w-[42px] h-[50px]"
       />

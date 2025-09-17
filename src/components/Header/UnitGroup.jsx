@@ -1,4 +1,5 @@
 function UnitGroup({ group, selected, setSelected }) {
+  const url = import.meta.env.BASE_URL;
   return (
     <div className="space-y-1">
       <p className="text-sm text-neutral-300 px-3">{group.label}</p>
@@ -14,7 +15,7 @@ function UnitGroup({ group, selected, setSelected }) {
                 value={opt.value}
                 name={group.key}
                 className="hidden"
-                onChange={() => setSelected( group.key, opt.value )}
+                onChange={() => setSelected(group.key, opt.value)}
                 checked={isSelected}
               />
               <label
@@ -26,7 +27,9 @@ function UnitGroup({ group, selected, setSelected }) {
                 }`}
               >
                 {opt.label}
-                {isSelected && <img src="/assets/images/icon-checkmark.svg" />}
+                {isSelected && (
+                  <img src={url + "/assets/images/icon-checkmark.svg"} />
+                )}
               </label>
             </div>
           );

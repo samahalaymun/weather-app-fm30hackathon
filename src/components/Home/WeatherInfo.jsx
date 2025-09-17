@@ -9,6 +9,7 @@ import moment from "moment";
 import { weatherIcons } from "../../utils/utils";
 
 function WeatherInfo() {
+  const url = import.meta.env.BASE_URL;
   const { weather, units } = useSelector((state) => state.weather);
   const [selected, setSelected] = useState(null);
 
@@ -18,7 +19,7 @@ function WeatherInfo() {
 
   useEffect(() => {
     if (weather?.daily && !selected) {
-      setSelected(weather.daily.time[0]); 
+      setSelected(weather.daily.time[0]);
     }
   }, [weather, selected]);
 

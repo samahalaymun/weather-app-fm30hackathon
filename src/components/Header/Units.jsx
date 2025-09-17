@@ -9,13 +9,14 @@ import {
 } from "../../features/weather/weatherSlice";
 
 export default function UnitsDropdown() {
+  const url = import.meta.env.BASE_URL;
   const { units, location, system } = useSelector((state) => state.weather);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
   const handleMeasurementUnitChange = (event) => {
     const newSystem = event.target.checked ? "imperial" : "metric";
-    dispatch(setSystem(newSystem)); 
+    dispatch(setSystem(newSystem));
   };
 
   const handleChangeUnits = (key, value) => {
@@ -34,9 +35,9 @@ export default function UnitsDropdown() {
         onClick={() => setOpen(!open)}
         className="flex items-center cursor-pointer gap-2 rounded-lg bg-neutral-800 px-4 py-2 text-neutral-200 hover:border-2 hover:border-neutral-0"
       >
-        <img src="/assets/images/icon-units.svg" alt="units" />
+        <img src={url+"/assets/images/icon-units.svg"} alt="units" />
         Units
-        <img src="/assets/images/icon-dropdown.svg" alt="dropdown" />
+        <img src={url+"/assets/images/icon-dropdown.svg"} alt="dropdown" />
       </button>
 
       {open && (

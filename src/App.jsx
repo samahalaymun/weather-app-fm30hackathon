@@ -7,7 +7,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 function App() {
 
   return (
-    <Router>
+    <Router basename="/weather-app-fm30hackathon">
       <Routes>
         <Route element={<RootLayout />}>
           <Route

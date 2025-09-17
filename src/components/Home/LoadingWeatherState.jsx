@@ -1,9 +1,9 @@
-import React from 'react'
-import ExtraInfoCard from './ExtraInfoCard';
-import WeatherDayCard from './WeatherDayCard';
-import { days } from '../../utils/utils';
+import ExtraInfoCard from "./ExtraInfoCard";
+import WeatherDayCard from "./WeatherDayCard";
+import { days } from "../../utils/utils";
 
 function LoadingWeatherState() {
+  const url = import.meta.env.BASE_URL;
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 mt-[48px] gap-8 w-full  text-white">
       {/* weather info / left side */}
@@ -49,15 +49,18 @@ function LoadingWeatherState() {
           </h2>
           <div className="flex gap-3 px-4 py-2 rounded-lg bg-neutral-600">
             –
-            <img src="/assets/images/icon-dropdown.svg" alt="dropdown" />
+            <img src={url+"/assets/images/icon-dropdown.svg"} alt="dropdown" />
           </div>
         </div>
         {Array.from({ length: 8 }).map((_, index) => (
-          <div key={`${index}-hour`} className="rounded-lg gap-2 h-15 w-full flex justify-between items-center border border-neutral-600 shadow pl-3 py-2.5 pr-4 bg-neutral-700"></div>
+          <div
+            key={`${index}-hour`}
+            className="rounded-lg gap-2 h-15 w-full flex justify-between items-center border border-neutral-600 shadow pl-3 py-2.5 pr-4 bg-neutral-700"
+          ></div>
         ))}
       </div>
     </div>
   );
 }
 
-export default LoadingWeatherState
+export default LoadingWeatherState;
