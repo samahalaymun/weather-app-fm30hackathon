@@ -1,10 +1,23 @@
 import SearchBar from "../../components/Home/SearchBar";
 import WeatherInfo from "../../components/Home/WeatherInfo";
 import LoadingWeatherState from "../../components/Home/LoadingWeatherState";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getWeather } from "../../features/weather/weatherSlice";
+import { useEffect } from "react";
+import ErrorPage from "../../components/ErrorPage";
 
 function Home() {
-  const weatherState = useSelector((state) => state.weather);
+  const { location, units, isLoading, error, fetchWeatherError } = useSelector(
+    (state) => state.weather
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getWeather({ lat: location.lat, lon: location.lon, units }));
+  }, []);
+  if (fetchWeatherError || error === "Network Error") {
+    return <ErrorPage />;
+  }
 
   return (
     <div className="mt-14">
@@ -12,8 +25,7 @@ function Home() {
         How's the sky looking today?
       </h1>
       <SearchBar />
-      {true && <WeatherInfo />}
-      {false && <LoadingWeatherState />}
+      {isLoading ? <LoadingWeatherState /> : !error && <WeatherInfo />}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import Home from './_root/pages/Home';
 import RootLayout from './_root/RootLayout';
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
 
@@ -9,7 +10,14 @@ function App() {
     <Router>
       <Routes>
         <Route element={<RootLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <ErrorBoundary>
+                <Home />
+              </ErrorBoundary>
+            }
+          />
         </Route>
       </Routes>
     </Router>

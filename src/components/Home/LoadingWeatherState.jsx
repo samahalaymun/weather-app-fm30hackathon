@@ -35,7 +35,7 @@ function LoadingWeatherState() {
           </h3>
           <div className="grid grid-cols-3 md:grid-cols-7 gap-4">
             {days.map((num) => (
-              <WeatherDayCard />
+              <WeatherDayCard key={num} />
             ))}
           </div>
         </div>
@@ -47,14 +47,13 @@ function LoadingWeatherState() {
           <h2 className="text-xl font-semibold leading-[120%]">
             Hourly forecast
           </h2>
-          {/* <DaysDropDown /> */}
           <div className="flex gap-3 px-4 py-2 rounded-lg bg-neutral-600">
             –
             <img src="/assets/images/icon-dropdown.svg" alt="dropdown" />
           </div>
         </div>
         {Array.from({ length: 8 }).map((_, index) => (
-          <div className="rounded-lg gap-2 h-15 w-full flex justify-between items-center border border-neutral-600 shadow pl-3 py-2.5 pr-4 bg-neutral-700"></div>
+          <div key={`${index}-hour`} className="rounded-lg gap-2 h-15 w-full flex justify-between items-center border border-neutral-600 shadow pl-3 py-2.5 pr-4 bg-neutral-700"></div>
         ))}
       </div>
     </div>

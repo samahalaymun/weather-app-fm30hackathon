@@ -1,21 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UnitGroup from "./UnitGroup";
 import { unitsOptions } from "../../utils/utils";
-
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getWeather,
+  setSystem,
+  setUnits,
+} from "../../features/weather/weatherSlice";
 
 export default function UnitsDropdown() {
+  const { units, location, system } = useSelector((state) => state.weather);
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [isImperial, setIsImperial] = useState(false);
-  const [selected, setSelected] = useState({
-    temperature: "Celsius (°C)",
-    windSpeed: "km/h",
-    precipitation: "Millimeters (mm)",
-  });
 
   const handleMeasurementUnitChange = (event) => {
-    setIsImperial(event.target.checked);
+    const newSystem = event.target.checked ? "imperial" : "metric";
+    dispatch(setSystem(newSystem)); 
   };
+
+  const handleChangeUnits = (key, value) => {
+    const newUnits = { ...units, [key]: value };
+    dispatch(setUnits(newUnits));
+  };
+  useEffect(() => {
+    if (location) {
+      dispatch(getWeather({ lat: location.lat, lon: location.lon, units }));
+    }
+  }, [units]);
 
   return (
     <div className="relative inline-block text-left">
@@ -37,11 +48,11 @@ export default function UnitsDropdown() {
                 name="measurementUnit"
                 id="measurementUnit"
                 className="hidden"
-                checked={isImperial}
+                checked={system === "imperial"}
                 onChange={handleMeasurementUnitChange}
               />
               <label htmlFor="measurementUnit">
-                Switch to {isImperial === false ? "Imperial" : "Metric"}
+                Switch to {system !== "imperial" ? "Imperial" : "Metric"}
               </label>
             </div>
 
@@ -49,8 +60,8 @@ export default function UnitsDropdown() {
               <UnitGroup
                 key={group.key}
                 group={group}
-                selected={selected}
-                setSelected={setSelected}
+                selected={units}
+                setSelected={handleChangeUnits}
               />
             ))}
           </div>

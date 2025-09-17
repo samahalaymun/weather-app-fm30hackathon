@@ -43,14 +43,16 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--color-neutral-700);
+  margin-bottom: 24px;
+ 
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-neutral-600);
+  background-color: #3C3B5E;
   border-radius: 9999px;
 }
