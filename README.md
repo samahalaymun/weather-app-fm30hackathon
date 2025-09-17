@@ -57,7 +57,8 @@ Users should be able to:
 ### Useful resources
 
 - [tailwind](https://tailwindcss.com) - This helped me for styling.
-- [youtube](https://www.youtube.com) - This helped me for solving some problems during development -[chatgpt](https://chatgpt.com/) -This helped me for reviewing my code,شnd other things that helped me develop this project.
+- [youtube](https://www.youtube.com) - This helped me for solving some problems during development
+- [chatgpt](https://chatgpt.com/) -This helped me for reviewing my code,and other things that helped me develop this project.
 
 ## Author
 
