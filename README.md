@@ -10,11 +10,8 @@ This is a solution to the [Weather app challenge on Frontend Mentor](https://www
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -35,17 +32,34 @@ Users should be able to:
 
 ### Screenshot
 
+- ![weather](./screenshot1.png)
+- ![deropdown state](./screenshot2.png)
+- ![error status](./screenshot3.png)
+- ![loading status](./screenshot4.png)
+
 ### Links
+
+- Solution URL:(https://github.com/samahalaymun/weather-app-fm30hackathon)
+- Live Site URL:(https://samahalaymun.github.io/weather-app-fm30hackathon/)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- [React](https://reactjs.org/) - JS library 
+- [React](https://reactjs.org/) - JS library
 - [Redux](https://redux.js.org) - JS library
 - [tailwindCSS](https://tailwindcss.com) - utility-first CSS framework
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
 
+### Useful resources
+
+- [tailwind](https://tailwindcss.com) - This helped me for styling.
+- [youtube](https://www.youtube.com) - This helped me for solving some problems during development -[chatgpt](https://chatgpt.com/) -This helped me for reviewing my code,شnd other things that helped me develop this project.
+
+## Author
+
+- Frontend Mentor - [@samahalaymun](https://www.frontendmentor.io/profile/samahalaymun)
+- Linkedin - [samah abu laymun](https://www.linkedin.com/in/samah-abu-laymun-076414a7/)
