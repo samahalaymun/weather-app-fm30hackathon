@@ -3,8 +3,8 @@ function ErrorPage() {
   return (
     <div className="mt-16 w-full pt-10 flex flex-col items-center gap-6">
       <img
-        src={url + "/assets/images/icon-error.svg"}
-        alt="error"
+        src={url+"/assets/images/icon-error.svg"}
+        alt="error-icon"
         className="w-[42px] h-[50px]"
       />
       <h1 className="font-bold text-[52px] font-grotesque">
@@ -20,7 +20,10 @@ function ErrorPage() {
           window.location.reload();
         }}
       >
-        <i className="fa-solid fa-arrows-rotate"></i>
+        <img
+          src={url+"/assets/images/icon-retry.svg"}
+          alt="retry-icon"
+        />
         Retry
       </button>
     </div>
