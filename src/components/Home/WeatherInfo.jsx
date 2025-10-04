@@ -9,7 +9,6 @@ import moment from "moment";
 import { weatherIcons } from "../../utils/utils";
 
 function WeatherInfo() {
-  const url = import.meta.env.BASE_URL;
   const { weather, units } = useSelector((state) => state.weather);
   const [selected, setSelected] = useState(null);
 
@@ -34,7 +33,7 @@ function WeatherInfo() {
       .filter((h) => h.time.startsWith(selected));
   }
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 mt-8 lg:mt-[48px] gap-8 w-full text-white">
+    <div className="grid grid-cols-1 lg:grid-cols-3 mt-8 lg:mt-[48px] gap-8 w-full dark:text-white">
       {/* weather info / left side */}
       <div className="lg:col-span-2 flex flex-col gap-5 md:gap-8">
         <CurrentWeatherCard />
@@ -82,8 +81,8 @@ function WeatherInfo() {
       </div>
 
       {/* Hourly forecast / right side */}
-      <div className=" relative bg-neutral-800  flex flex-col gap-3 rounded-[20px] max-h-[693px] ">
-        <div className="flex justify-between bg-neutral-800 rounded-[20px] px-6 pt-6  items-center sticky top-0">
+      <div className=" relative bg-neutral-150 dark:bg-neutral-800  flex flex-col gap-3 rounded-[20px] max-h-[693px] ">
+        <div className="flex justify-between bg-neutral-150 dark:bg-neutral-800 rounded-[20px] px-6 pt-6  items-center sticky top-0">
           <h2 className="text-xl font-semibold leading-[120%]">
             Hourly forecast
           </h2>

@@ -11,14 +11,14 @@ function DaysDropDown({ selectedDay, setSelectedDay }) {
     <div className="relative inline-block text-left">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center cursor-pointer gap-3 text-[16px] rounded-lg bg-neutral-600 px-4 py-2 text-neutral-0 hover:border-2 hover:border-neutral-0"
+        className="flex items-center cursor-pointer gap-3 text-[16px] rounded-lg  bg-neutral-100 dark:bg-neutral-600 px-4 py-2 dark:text-neutral-0 hover:border-2 dark:hover:border-neutral-0"
       >
         {moment(selectedDay).format("dddd")}
-        <img src={url+"/assets/images/icon-dropdown.svg"} alt="dropdown" />
+        <img src={url + "/assets/images/icon-dropdown.svg"} alt="dropdown" />
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-54 z-50 flex flex-col gap-1 border border-neutral-600 shadow-lg r bg-neutral-800 rounded-lg p-2">
+        <div className="absolute right-0 mt-2 w-54 z-50 flex flex-col gap-1 border border-neutral-300 dark:border-neutral-600 shadow-lg r bg-neutral-150 dark:bg-neutral-800 rounded-lg p-2">
           {weather?.daily?.time?.map((day, i) => (
             <p
               key={`daus-drop-${i}`}
@@ -26,8 +26,10 @@ function DaysDropDown({ selectedDay, setSelectedDay }) {
                 setSelectedDay(day);
                 setOpen(false);
               }}
-              className={`px-2 py-2.5 rounded-lg cursor-pointer hover:bg-neutral-700 ${
-                selectedDay === day ? "bg-neutral-700" : ""
+              className={`px-2 py-2.5 rounded-lg cursor-pointer dark:hover:bg-neutral-700 ${
+                selectedDay === day
+                  ? "dark:bg-neutral-700 bg-neutral-200"
+                  : ""
               }`}
             >
               {moment(day).format("dddd")}

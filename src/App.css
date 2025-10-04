@@ -19,6 +19,8 @@
   --color-neutral-600: hsl(243, 23%, 30%);
   --color-neutral-300: hsl(240, 6%, 70%);
   --color-neutral-200: hsl(250, 6%, 84%);
+  --color-neutral-150:hsl(240, 31%, 94%);
+  --color-neutral-100: hsl(240, 33%, 99%);
   --color-neutral-0: hsl(0, 0%, 100%);
 
   /* Orange */
@@ -39,20 +41,34 @@ body {
   font-size: var(--text-base);
   font-family: var(--font-sans);
   color: var(--color-neutral-0);
-  background-color: var(--color-neutral-900);
+  @apply dark:bg-neutral-900 bg-neutral-100 dark:text-neutral-0 text-neutral-900;
 }
 
 ::-webkit-scrollbar {
   width: 4px;
 }
 
-::-webkit-scrollbar-track {
+.dark ::-webkit-scrollbar-track {
   background: var(--color-neutral-700);
   margin-bottom: 24px;
  
 }
 
-::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb {
   background-color: #3C3B5E;
   border-radius: 9999px;
 }
+
+
+
+::-webkit-scrollbar-track {
+  margin-bottom: 24px;
+  background-color:var(--color-neutral-150);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6d5ec;
+  border-radius: 9999px;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));

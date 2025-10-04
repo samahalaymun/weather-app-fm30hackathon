@@ -24,15 +24,15 @@ function CurrentWeatherCard() {
       <img
         src={
           screenWidth > 1024
-            ? url+"/assets/images/bg-today-large.svg"
-            : url+"/assets/images/bg-today-small.svg"
+            ? url + "/assets/images/bg-today-large.svg"
+            : url + "/assets/images/bg-today-small.svg"
         }
         alt="bg-today"
         className="w-full h-full rounded-xl   transition-all duration-700 ease-in-out"
       />
       <div className="absolute  w-full h-full z-20 top-0 left-0 flex flex-col gap-4 justify-center md:flex-row md:justify-between items-center p-6 ">
         <div className="">
-          <h2 className="text-[28px] font-bold leading-[120%] mb-3 text-center md:text-left">
+          <h2 className="text-[28px] text-neutral-0 font-bold leading-[120%] mb-3 text-center md:text-left">
             {location?.displayName}
           </h2>
           <p className="text-neutral-0 font-medium text-center md:text-left">
@@ -41,11 +41,11 @@ function CurrentWeatherCard() {
         </div>
         <div className="flex justify-between items-center md:gap-5">
           <img
-            src={url+weatherIcons[weather?.current?.weathercode]}
+            src={url + weatherIcons[weather?.current?.weathercode]}
             alt="weather-status"
             className="w-30 h-30"
           />
-          <span className="text-8xl md:text-[96px] font-semibold -tracking-[2%] font-sans">
+          <span className="text-8xl text-neutral-0 md:text-[96px] font-semibold -tracking-[2%] font-sans">
             {Math.round(weather?.current?.temperature_2m)}°
           </span>
         </div>

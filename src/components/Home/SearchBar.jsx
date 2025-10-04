@@ -4,10 +4,11 @@ import SearchResult from "./SearchResult";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocation, getWeather } from "../../features/weather/weatherSlice";
 import { deboune } from "../../utils/utils";
+import Search from "../Svgs/Search";
 
 function SearchBar() {
   const url = import.meta.env.BASE_URL;
-
+  const { lightMode } = useSelector((state) => state.theme);
   const { units, searchLoding, error, searchResult, location } = useSelector(
     (state) => state.weather
   );
@@ -35,7 +36,7 @@ function SearchBar() {
       >
         <div className="relative  w-full  lg:w-[526px]">
           <input
-            className="rounded-xl bg-neutral-800 px-[62px] py-4 w-full tracking-wider"
+            className="rounded-xl bg-neutral-150 dark:bg-neutral-800 px-[62px] py-4 w-full tracking-wider"
             placeholder="Search for a place..."
             onChange={(e) => {
               setCity(e.target.value);
@@ -45,11 +46,14 @@ function SearchBar() {
             type="text"
             name="searchCity"
           />
-          <img
-            src={url+"/assets/images/icon-search.svg"}
+          {/* <img
+            src={url + "/assets/images/icon-search.svg"}
             alt="search"
             className="absolute left-6 top-[35%]"
-          />
+          /> */}
+          <div className="absolute left-6 top-[35%] ">
+            <Search fill={!lightMode ? "#D4D3D9" : "#3d3b5e"} />
+          </div>
           {searchLoding && <SearchInProgress />}
           {searchResult.length > 0 && searchQuery && (
             <SearchResult setQuery={setCity} cities={searchResult} />
@@ -57,7 +61,7 @@ function SearchBar() {
         </div>
         <button
           disabled={!city}
-          className="rounded-xl disabled:opacity-50 bg-blue-500 hover:bg-blue-700 text-xl font-medium w-full md:h-[56px] px-6 py-4 md:w-[114px]"
+          className="rounded-xl disabled:opacity-50 text-neutral-0 bg-blue-500 hover:bg-blue-700 text-xl font-medium w-full md:h-[56px] px-6 py-4 md:w-[114px]"
         >
           Search
         </button>

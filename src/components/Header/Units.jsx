@@ -7,12 +7,14 @@ import {
   setSystem,
   setUnits,
 } from "../../features/weather/weatherSlice";
+import DropDown from "../Svgs/DropDown";
+import UnitsIcon from "../Svgs/UnitsIcon";
 
 export default function UnitsDropdown() {
-  const url = import.meta.env.BASE_URL;
   const { units, location, system } = useSelector((state) => state.weather);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const { fill } = useSelector((state) => state.theme);
 
   const handleMeasurementUnitChange = (event) => {
     const newSystem = event.target.checked ? "imperial" : "metric";
@@ -33,17 +35,17 @@ export default function UnitsDropdown() {
     <div className="relative inline-block text-left">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center cursor-pointer gap-2 rounded-lg bg-neutral-800 px-4 py-2 text-neutral-200 hover:border-2 hover:border-neutral-0"
+        className="flex items-center cursor-pointer gap-2 rounded-lg bg-neutral-150 dark:bg-neutral-800 px-4 py-2 text-neutral-600 dark:text-neutral-200 hover:border-2 dark:hover:border-neutral-0"
       >
-        <img src={url+"/assets/images/icon-units.svg"} alt="units" />
+        <UnitsIcon fill={fill} />
         Units
-        <img src={url+"/assets/images/icon-dropdown.svg"} alt="dropdown" />
+        <DropDown fill={fill} />
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-64 rounded-xl bg-neutral-800 shadow-lg ring-1 ring-neutral-700 z-50">
+        <div className="absolute right-0 mt-2 w-64 rounded-xl  bg-neutral-150 dark:bg-neutral-800 shadow-lg ring-1 ring-neutral-200 dark:ring-neutral-700 z-50">
           <div className="p-3 space-y-3">
-            <div className="px-3 py-3 hover:border hover:border-neutral-0 rounded-lg cursor-pointer">
+            <div className="px-3 py-3 hover:border dark:hover:border-neutral-0 rounded-lg cursor-pointer">
               <input
                 type="checkbox"
                 name="measurementUnit"
@@ -57,12 +59,13 @@ export default function UnitsDropdown() {
               </label>
             </div>
 
-            {unitsOptions.map((group) => (
+            {unitsOptions.map((group,index) => (
               <UnitGroup
                 key={group.key}
                 group={group}
                 selected={units}
                 setSelected={handleChangeUnits}
+                isLast={index===unitsOptions.length-1}
               />
             ))}
           </div>
